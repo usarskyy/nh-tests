@@ -79,6 +79,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -88,15 +89,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\ApplicationDataEntity.cs" />
+    <Compile Include="Entities\DealDataEntity.cs" />
     <Compile Include="Entities\MerchantDataEntity.cs" />
     <Compile Include="Mappings\ApplicationMap.cs" />
+    <Compile Include="Mappings\DealMap.cs" />
     <Compile Include="Mappings\MerchantMap.cs" />
+    <Compile Include="NHComplexConfigInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ComplexDealDA.cs" />
+    <Compile Include="Services\AdoDealService.cs" />
+    <Compile Include="Services\Constants.cs" />
+    <Compile Include="Services\IDealService.cs" />
+    <Compile Include="Services\NHDealTester.cs" />
+    <Compile Include="Services\NHStatefulDealService.cs" />
+    <Compile Include="Services\NHStatelessDealService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

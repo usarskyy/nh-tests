@@ -24,7 +24,7 @@ namespace NHTestConsole.DbSimpleCfg.Services
     public IList<DealDataEntity> LoadThousands()
     {
       var query = _dbSession.Query<DealDataEntity>()
-                            .Where(x => x.MerchantID == Constants.THOUSANDS_MERCHANT_ID);
+                            .Where(x => x.DealTypeID == Constants.THOUSANDS_MERCHANT_ID);
 
       if (_cachedQueries)
       {
@@ -39,7 +39,7 @@ namespace NHTestConsole.DbSimpleCfg.Services
     public IList<DealDataEntity> LoadHunderts()
     {
       var query = _dbSession.Query<DealDataEntity>()
-                            .Where(x => x.MerchantID == Constants.HUNDERTS_MERCHANT_ID);
+                            .Where(x => x.DealTypeID == Constants.HUNDERTS_MERCHANT_ID);
 
       if (_cachedQueries)
       {

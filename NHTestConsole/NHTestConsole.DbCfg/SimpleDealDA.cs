@@ -9,7 +9,7 @@ using NHTestConsole.DbSimpleCfg.Entities;
 
 namespace NHTestConsole.DbSimpleCfg
 {
-  public class DealDA
+  public class SimpleDealDA
   {
     private const string SQL = @"SELECT [DealID]
                                        ,[ExternalID]
@@ -30,10 +30,11 @@ namespace NHTestConsole.DbSimpleCfg
                                        ,[TotalArea]
                                        ,[SpecialOffer]
                                        ,[LuxuryProperty]
+                                       ,[DealTypeID]
                                  FROM [dbo].[vwDeals]
-                                 WHERE [MerchantID] = @merchantId";
+                                 WHERE [DealTypeID] = @dealTypeId";
 
-    public IList<DealDataEntity> LoadDeals(int merchantId)
+    public IList<DealDataEntity> LoadDeals(int dealTypeId)
     {
       var result = new List<DealDataEntity>();
 
@@ -42,7 +43,7 @@ namespace NHTestConsole.DbSimpleCfg
         using (var cmd = new SqlCommand(SQL, conn))
         {
           cmd.CommandType = CommandType.Text;
-          cmd.Parameters.AddWithValue("merchantId", merchantId);
+          cmd.Parameters.AddWithValue("dealTypeId", dealTypeId);
 
           conn.Open();
 
@@ -81,6 +82,7 @@ namespace NHTestConsole.DbSimpleCfg
       result.IsDeleted = reader.GetBoolean(reader.GetOrdinal("IsDeleted"));
       result.IsShared = reader.GetBoolean(reader.GetOrdinal("IsShared"));
       result.MerchantID = reader.GetInt32(reader.GetOrdinal("MerchantID"));
+      result.DealTypeID = reader.GetInt16(reader.GetOrdinal("DealTypeID"));
       result.LuxuryProperty = reader.GetBoolean(reader.GetOrdinal("LuxuryProperty"));
       result.SpecialOffer = reader.GetBoolean(reader.GetOrdinal("SpecialOffer"));
       

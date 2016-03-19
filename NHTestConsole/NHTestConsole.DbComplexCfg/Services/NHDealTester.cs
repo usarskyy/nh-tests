@@ -4,7 +4,7 @@ using System.Text;
 using NHibernate;
 
 
-namespace NHTestConsole.DbSimpleCfg.Services
+namespace NHTestConsole.DbComplexCfg.Services
 {
   public static class NHDealTester
   {
@@ -132,7 +132,7 @@ namespace NHTestConsole.DbSimpleCfg.Services
     
     private static ISession GetStatefulSession(bool useCache)
     {
-      var initializer = new NHSimpleConfigInitializer(useCache);
+      var initializer = new NHComplexConfigInitializer(useCache);
       var session = initializer.SessionFactory.OpenSession();
 
       return session;
@@ -140,7 +140,7 @@ namespace NHTestConsole.DbSimpleCfg.Services
 
     private static IStatelessSession GetStatelessSession(bool useCache)
     {
-      var initializer = new NHSimpleConfigInitializer(useCache);
+      var initializer = new NHComplexConfigInitializer(useCache);
       var session = initializer.SessionFactory.OpenStatelessSession();
 
       return session;

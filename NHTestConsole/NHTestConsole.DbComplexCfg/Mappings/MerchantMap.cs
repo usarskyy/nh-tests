@@ -11,6 +11,9 @@ namespace NHTestConsole.DbComplexCfg.Mappings
     {
       Table("Merchants");
 
+      Cache.IncludeAll()
+           .ReadWrite();
+
       Id(x => x.ID).Column("MerchantID").GeneratedBy.Identity();
 
       Map(x => x.Name).Length(50).Not.Nullable();
@@ -19,6 +22,12 @@ namespace NHTestConsole.DbComplexCfg.Mappings
       Map(x => x.ExternalID).Length(50).Unique().UniqueKey("UQ_Merchants_ExternalID").Not.Nullable().Not.Update();
       Map(x => x.CreatedBy).Length(50).Not.Nullable().Not.Update();
       Map(x => x.CreatedOn).Not.Nullable().Not.Update();
+
+      HasMany(x => x.ChildApplications)
+        .KeyColumn("ParentMerchantID")
+        .Cascade.None()
+        .LazyLoad()
+        .Inverse();
     }
   }
 }

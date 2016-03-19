@@ -21,5 +21,7 @@ namespace NHTestConsole.DbComplexCfg.Entities
     public virtual bool IsApproved { get; set; }
 
     public virtual bool IsActive { get; set; }
+
+    public virtual MerchantDataEntity ParentMerchant { get; set; }
   }
 }

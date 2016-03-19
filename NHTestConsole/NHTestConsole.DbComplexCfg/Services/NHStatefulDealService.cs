@@ -4,17 +4,17 @@ using System.Linq;
 using NHibernate;
 using NHibernate.Linq;
 
-using NHTestConsole.DbSimpleCfg.Entities;
+using NHTestConsole.DbComplexCfg.Entities;
 
 
-namespace NHTestConsole.DbSimpleCfg.Services
+namespace NHTestConsole.DbComplexCfg.Services
 {
-  public class NHStatelessDealService : IDealService
+  public class NHStatefulDealService : IDealService
   {
     private readonly bool _cachedQueries;
-    private readonly IStatelessSession _dbSession;
+    private readonly ISession _dbSession;
 
-    public NHStatelessDealService(IStatelessSession dbSession, bool cachedQueries)
+    public NHStatefulDealService(ISession dbSession, bool cachedQueries)
     {
       _cachedQueries = cachedQueries;
       _dbSession = dbSession;
@@ -24,6 +24,8 @@ namespace NHTestConsole.DbSimpleCfg.Services
     public IList<DealDataEntity> LoadThousands()
     {
       var query = _dbSession.Query<DealDataEntity>()
+                            .Fetch(x => x.Application)
+                            .Fetch(x => x.Merchant)
                             .Where(x => x.DealTypeID == Constants.THOUSANDS_MERCHANT_ID);
 
       if (_cachedQueries)
@@ -39,6 +41,8 @@ namespace NHTestConsole.DbSimpleCfg.Services
     public IList<DealDataEntity> LoadHunderts()
     {
       var query = _dbSession.Query<DealDataEntity>()
+                            .Fetch(x => x.Application)
+                            .Fetch(x => x.Merchant)
                             .Where(x => x.DealTypeID == Constants.HUNDERTS_MERCHANT_ID);
 
       if (_cachedQueries)

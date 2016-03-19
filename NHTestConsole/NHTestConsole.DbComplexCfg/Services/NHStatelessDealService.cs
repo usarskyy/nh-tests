@@ -4,10 +4,10 @@ using System.Linq;
 using NHibernate;
 using NHibernate.Linq;
 
-using NHTestConsole.DbSimpleCfg.Entities;
+using NHTestConsole.DbComplexCfg.Entities;
 
 
-namespace NHTestConsole.DbSimpleCfg.Services
+namespace NHTestConsole.DbComplexCfg.Services
 {
   public class NHStatelessDealService : IDealService
   {

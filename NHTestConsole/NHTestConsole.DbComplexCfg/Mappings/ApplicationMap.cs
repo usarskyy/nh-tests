@@ -9,7 +9,8 @@ namespace NHTestConsole.DbComplexCfg.Mappings
   {
     public ApplicationMap()
     {
-      Cache.IncludeAll().ReadWrite();
+      Cache.IncludeAll()
+           .ReadWrite();
 
       Table("Applications");
 
@@ -37,6 +38,11 @@ namespace NHTestConsole.DbComplexCfg.Mappings
 
       Map(x => x.IsApproved).Not.Nullable();
       Map(x => x.IsActive).Not.Nullable();
+
+      References(x => x.ParentMerchant)
+        .Column("ParentMerchantID")
+        .LazyLoad()
+        .Not.Nullable();
     }
   }
 }

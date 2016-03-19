@@ -1,9 +1,9 @@
 ﻿using FluentNHibernate.Mapping;
 
-using NHTestConsole.DbSimpleCfg.Entities;
+using NHTestConsole.DbComplexCfg.Entities;
 
 
-namespace NHTestConsole.DbSimpleCfg.Mappings
+namespace NHTestConsole.DbComplexCfg.Mappings
 {
   public class DealMap : ClassMap<DealDataEntity>
   {
@@ -13,6 +13,7 @@ namespace NHTestConsole.DbSimpleCfg.Mappings
 
       Cache.IncludeAll()
            .ReadWrite();
+
 
       Id(x => x.ID).Column("DealID");
 
@@ -57,12 +58,14 @@ namespace NHTestConsole.DbSimpleCfg.Mappings
         .Not.Insert()
         .Not.Update();
 
-      Map(x => x.ApplicationID)
+      References(x => x.Application)
         .Column("ApplicationID")
+        .LazyLoad()
         .Nullable();
 
-      Map(x => x.MerchantID)
+      References(x => x.Merchant)
         .Column("MerchantID")
+        .LazyLoad()
         .Not.Nullable();
     }
   }

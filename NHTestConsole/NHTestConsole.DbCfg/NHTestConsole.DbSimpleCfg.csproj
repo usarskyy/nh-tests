@@ -88,10 +88,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DealDA.cs" />
+    <Compile Include="SimpleDealDA.cs" />
     <Compile Include="Entities\DealDataEntity.cs" />
     <Compile Include="Mappings\DealMap.cs" />
-    <Compile Include="NHConfigInitializer.cs" />
+    <Compile Include="NHSimpleConfigInitializer.cs" />
     <Compile Include="Services\AdoDealService.cs" />
     <Compile Include="Services\Constants.cs" />
     <Compile Include="Services\IDealService.cs" />

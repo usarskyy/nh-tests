@@ -1,4 +1,4 @@
-﻿namespace NHTestConsole.DbSimpleCfg.Services
+﻿namespace NHTestConsole.DbComplexCfg.Services
 {
   static class Constants
   {

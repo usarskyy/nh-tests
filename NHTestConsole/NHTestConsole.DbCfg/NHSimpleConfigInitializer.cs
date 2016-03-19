@@ -12,11 +12,11 @@ using NHTestConsole.DbSimpleCfg.Mappings;
 
 namespace NHTestConsole.DbSimpleCfg
 {
-  public class NHConfigInitializer
+  public class NHSimpleConfigInitializer
   {
     public ISessionFactory SessionFactory { get; private set; }
 
-    public NHConfigInitializer(bool useCache = false)
+    public NHSimpleConfigInitializer(bool useCache = false)
     {
       var nhibernateCfg = new Configuration();
 

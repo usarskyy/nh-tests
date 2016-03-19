@@ -2,7 +2,7 @@
 using System.Diagnostics;
 
 
-namespace NHTestConsole.DbSimpleCfg.Entities
+namespace NHTestConsole.DbComplexCfg.Entities
 {
   [Serializable]
   [DebuggerDisplay("ID:[{ID}], Type:[{Type.Name}], Merchant:[{Merchant.Name}], From: [{From.Count}], To: [{To.Count}]")]
@@ -18,9 +18,9 @@ namespace NHTestConsole.DbSimpleCfg.Entities
 
     public virtual bool IsShared { get; set; }
 
-    public virtual int? ApplicationID { get; set; }
+    public virtual ApplicationDataEntity Application { get; set; }
 
-    public virtual int MerchantID { get; set; }
+    public virtual MerchantDataEntity Merchant { get; set; }
 
     public virtual short DealTypeID { get; set; }
 
