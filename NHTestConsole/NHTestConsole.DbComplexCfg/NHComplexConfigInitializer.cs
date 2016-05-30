@@ -1,12 +1,6 @@
-﻿using System;
+﻿using NHibernate;
 
-using FluentNHibernate.Cfg;
-
-using NHibernate;
-using NHibernate.Bytecode;
-using NHibernate.Cfg;
-using NHibernate.Dialect;
-
+using NHTestConsole.Common;
 using NHTestConsole.DbComplexCfg.Mappings;
 
 
@@ -16,29 +10,9 @@ namespace NHTestConsole.DbComplexCfg
   {
     public ISessionFactory SessionFactory { get; private set; }
 
-    public NHComplexConfigInitializer(bool useCache = false)
+    public NHComplexConfigInitializer(CacheType cacheType = CacheType.None)
     {
-      var nhibernateCfg = new Configuration();
-
-      nhibernateCfg.SessionFactory()
-                   .Proxy.Through<DefaultProxyFactoryFactory>()
-                   .Integrate.Using<MsSql2008Dialect>()
-                   .Connected.ByAppConfing("adminDb");
-
-      var fluentCfg = Fluently.Configure(nhibernateCfg.Cache(x =>
-      {
-        x.UseQueryCache = true;
-
-        if (useCache)
-        {
-          x.Provider<NHibernate.Caches.RtMemoryCache.RtMemoryCacheProvider>();
-          //x.Provider<NHibernate.Caches.SysCache2.SysCacheProvider>();
-        }
-      }));
-
-      fluentCfg.Mappings(map => map.FluentMappings.AddFromAssemblyOf<DealMap>());
-
-      SessionFactory = fluentCfg.BuildSessionFactory();
+      SessionFactory = SessionFactoryBuilder.BuildWithMappingsFromAssemblyOf<DealMap>(cacheType);
     }
   }
 }

@@ -62,6 +62,10 @@
       <HintPath>..\packages\NHibernate.Caches.MemCache.3.2.0.4000\lib\Net35\NHibernate.Caches.MemCache.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="NHibernate.Caches.Redis, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NHibernate.Caches.Redis.2.0.0\lib\net45\NHibernate.Caches.Redis.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="NHibernate.Caches.RtMemoryCache, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=6876f2ea66c9f443, processorArchitecture=MSIL">
       <HintPath>..\packages\NHibernate.Caches.RtMemoryCache.4.0.0.4000\lib\net40\NHibernate.Caches.RtMemoryCache.dll</HintPath>
       <Private>True</Private>
@@ -108,7 +112,12 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\NHTestConsole.Common\NHTestConsole.Common.csproj">
+      <Project>{f2117be6-e731-417d-a600-6244069c92c4}</Project>
+      <Name>NHTestConsole.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

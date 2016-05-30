@@ -1,5 +1,7 @@
 ﻿using System;
 
+using NHTestConsole.Common;
+
 using ComplexNHDealTester = NHTestConsole.DbComplexCfg.Services.NHDealTester;
 using SimpleNHDealTester = NHTestConsole.DbSimpleCfg.Services.NHDealTester;
 
@@ -16,8 +18,8 @@ namespace NTTestConsole.ProfilingApp
       Console.WriteLine("Started at: " + DateTime.UtcNow);
       */
       //ComplexNHDealTester.TestAdoHunderts(2, false);
-      SimpleNHDealTester.TestStatelessHunderts(false, 1, false);
-      SimpleNHDealTester.TestStatelessHunderts(false, 1, false);
+      SimpleNHDealTester.TestStatefulThousands(CacheType.Redis, 1, false);
+      SimpleNHDealTester.TestStatefulThousands(CacheType.Redis, 1, false);
 
       /*
       Console.WriteLine("Ended at: " + DateTime.UtcNow);

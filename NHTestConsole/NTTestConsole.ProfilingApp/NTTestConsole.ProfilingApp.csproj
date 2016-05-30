@@ -48,6 +48,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\NHTestConsole.Common\NHTestConsole.Common.csproj">
+      <Project>{f2117be6-e731-417d-a600-6244069c92c4}</Project>
+      <Name>NHTestConsole.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NHTestConsole.DbCfg\NHTestConsole.DbSimpleCfg.csproj">
       <Project>{52fd2504-2eea-4423-b7ec-4d054146a0d6}</Project>
       <Name>NHTestConsole.DbSimpleCfg</Name>
