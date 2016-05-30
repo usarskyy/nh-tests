@@ -23,32 +23,29 @@ namespace NHTestConsole.DbSimpleCfg.Services
 
     public IList<DealDataEntity> LoadThousands()
     {
-      var query = _dbSession.Query<DealDataEntity>()
-                            .Where(x => x.DealTypeID == Constants.THOUSANDS_MERCHANT_ID);
-
-      if (_cachedQueries)
-      {
-        query = query.Cacheable();
-      }
-
-      var deals = query.ToList();
+      var deals = GetBaseQuery(Constants.THOUSANDS_MERCHANT_ID).ToList();
 
       return deals;
     }
 
     public IList<DealDataEntity> LoadHunderts()
     {
+      var deals = GetBaseQuery(Constants.HUNDERTS_MERCHANT_ID).ToList();
+
+      return deals;
+    }
+
+    private IQueryable<DealDataEntity> GetBaseQuery(short dealTypeId)
+    {
       var query = _dbSession.Query<DealDataEntity>()
-                            .Where(x => x.DealTypeID == Constants.HUNDERTS_MERCHANT_ID);
+                            .Where(x => x.DealTypeID == dealTypeId);
 
       if (_cachedQueries)
       {
         query = query.Cacheable();
       }
 
-      var deals = query.ToList();
-
-      return deals;
+      return query;
     }
   }
 }

@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 namespace NHTestConsole
 {
-  internal class ScenarioTester
+  internal static class ScenarioTester
   {
     public static void Scenario(string name, Action action, int runCycles = 1, bool warmup = true)
     {

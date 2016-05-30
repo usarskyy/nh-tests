@@ -10,7 +10,7 @@ namespace NHTestConsole
     public static void Test()
     {
       const int testerReloadCount = 10;
-      const int scenarioRerunCount = 3;
+      const int scenarioRerunCount = 1;
 
       Console.WriteLine("Test simple services: ");
       Console.WriteLine();
@@ -23,11 +23,11 @@ namespace NHTestConsole
 
       Console.WriteLine("-----------------------");
 
-      ScenarioTester.Scenario(string.Format("Test ADO.NET without cache, loads a few thousands rows {0} times", testerReloadCount), () => NHDealTester.TestAdoThousands(testerReloadCount), runCycles: scenarioRerunCount, warmup: false);
-      ScenarioTester.Scenario(string.Format("Test stateful session without cache, loads a few thousands rows {0} times", testerReloadCount), () => NHDealTester.TestStatefulThousands(false, testerReloadCount), runCycles: scenarioRerunCount, warmup: false);
-      ScenarioTester.Scenario(string.Format("Test stateless session without cache, loads a few thousands rows {0} times", testerReloadCount), () => NHDealTester.TestStatelessThousands(false, testerReloadCount), runCycles: scenarioRerunCount, warmup: false);
-      ScenarioTester.Scenario(string.Format("Test stateful session with cache, loads a few thousands rows {0} times", testerReloadCount), () => NHDealTester.TestStatefulThousands(true, testerReloadCount), runCycles: scenarioRerunCount, warmup: false);
-      ScenarioTester.Scenario(string.Format("Test stateless session with cache, loads a few thousands rows {0} times", testerReloadCount), () => NHDealTester.TestStatelessThousands(true, testerReloadCount), runCycles: scenarioRerunCount, warmup: false);
+      ScenarioTester.Scenario(string.Format("Test ADO.NET without cache, loads a few thousands rows {0} times", testerReloadCount), () => NHDealTester.TestAdoThousands(testerReloadCount), runCycles: scenarioRerunCount, warmup: true);
+      ScenarioTester.Scenario(string.Format("Test stateful session without cache, loads a few thousands rows {0} times", testerReloadCount), () => NHDealTester.TestStatefulThousands(false, testerReloadCount), runCycles: scenarioRerunCount, warmup: true);
+      ScenarioTester.Scenario(string.Format("Test stateless session without cache, loads a few thousands rows {0} times", testerReloadCount), () => NHDealTester.TestStatelessThousands(false, testerReloadCount), runCycles: scenarioRerunCount, warmup: true);
+      ScenarioTester.Scenario(string.Format("Test stateful session with cache, loads a few thousands rows {0} times", testerReloadCount), () => NHDealTester.TestStatefulThousands(true, testerReloadCount), runCycles: scenarioRerunCount, warmup: true);
+      ScenarioTester.Scenario(string.Format("Test stateless session with cache, loads a few thousands rows {0} times", testerReloadCount), () => NHDealTester.TestStatelessThousands(true, testerReloadCount), runCycles: scenarioRerunCount, warmup: true);
     }
   }
 }

@@ -9,7 +9,7 @@ namespace NHTestConsole.DbSimpleCfg.Mappings
   {
     public DealMap()
     {
-      Table("vwDeals");
+      Table("vwDeals2");
 
       Cache.IncludeAll()
            .ReadWrite();

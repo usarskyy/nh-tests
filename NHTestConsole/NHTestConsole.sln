@@ -1,13 +1,20 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHTestConsole", "NHTestConsole\NHTestConsole.csproj", "{15F15FE5-7385-4635-AC63-EB450499C8E2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHTestConsole.DbSimpleCfg", "NHTestConsole.DbCfg\NHTestConsole.DbSimpleCfg.csproj", "{52FD2504-2EEA-4423-B7EC-4D054146A0D6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHTestConsole.DbComplexCfg", "NHTestConsole.DbComplexCfg\NHTestConsole.DbComplexCfg.csproj", "{DDE423D2-A1AD-4F2D-B9AA-20BFD7653870}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTTestConsole.ProfilingApp", "NTTestConsole.ProfilingApp\NTTestConsole.ProfilingApp.csproj", "{04EB0D04-849D-4FC9-9728-526DC08B6AAE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5E696692-9A3C-4090-883C-5A87FEDA9B5D}"
+	ProjectSection(SolutionItems) = preProject
+		Performance1.psess = Performance1.psess
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +34,10 @@ Global
 		{DDE423D2-A1AD-4F2D-B9AA-20BFD7653870}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDE423D2-A1AD-4F2D-B9AA-20BFD7653870}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDE423D2-A1AD-4F2D-B9AA-20BFD7653870}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04EB0D04-849D-4FC9-9728-526DC08B6AAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04EB0D04-849D-4FC9-9728-526DC08B6AAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04EB0D04-849D-4FC9-9728-526DC08B6AAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04EB0D04-849D-4FC9-9728-526DC08B6AAE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -31,10 +31,8 @@ namespace NHTestConsole.DbComplexCfg
 
         if (useCache)
         {
-          //x.Provider<NHibernate.Caches.RtMemoryCache.RtMemoryCacheProvider>();
-          x.Provider<NHibernate.Caches.SysCache2.SysCacheProvider>();
-          x.RegionsPrefix = Guid.NewGuid()
-                                .ToString();
+          x.Provider<NHibernate.Caches.RtMemoryCache.RtMemoryCacheProvider>();
+          //x.Provider<NHibernate.Caches.SysCache2.SysCacheProvider>();
         }
       }));
 

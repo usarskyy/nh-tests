@@ -33,8 +33,6 @@ namespace NHTestConsole.DbSimpleCfg
         {
           //x.Provider<NHibernate.Caches.RtMemoryCache.RtMemoryCacheProvider>();
           x.Provider<NHibernate.Caches.SysCache2.SysCacheProvider>();
-          x.RegionsPrefix = Guid.NewGuid()
-                                .ToString();
         }
       }));
 

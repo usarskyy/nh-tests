@@ -25,6 +25,7 @@ namespace NHTestConsole.DbComplexCfg.Mappings
 
       HasMany(x => x.ChildApplications)
         .KeyColumn("ParentMerchantID")
+        .AsSet()
         .Cascade.None()
         .LazyLoad()
         .Inverse();

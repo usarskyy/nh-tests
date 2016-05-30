@@ -23,36 +23,31 @@ namespace NHTestConsole.DbComplexCfg.Services
 
     public IList<DealDataEntity> LoadThousands()
     {
-      var query = _dbSession.Query<DealDataEntity>()
-                            .Fetch(x => x.Application)
-                            .Fetch(x => x.Merchant)
-                            .Where(x => x.DealTypeID == Constants.THOUSANDS_MERCHANT_ID);
-
-      if (_cachedQueries)
-      {
-        query = query.Cacheable();
-      }
-
-      var deals = query.ToList();
+      var deals = GetBaseQuery(Constants.THOUSANDS_MERCHANT_ID).ToList();
 
       return deals;
     }
 
     public IList<DealDataEntity> LoadHunderts()
     {
+      var deals = GetBaseQuery(Constants.HUNDERTS_MERCHANT_ID).ToList();
+
+      return deals;
+    }
+
+    private IEnumerable<DealDataEntity> GetBaseQuery(short dealTypeId)
+    {
       var query = _dbSession.Query<DealDataEntity>()
                             .Fetch(x => x.Application)
                             .Fetch(x => x.Merchant)
-                            .Where(x => x.DealTypeID == Constants.HUNDERTS_MERCHANT_ID);
+                            .Where(x => x.DealTypeID == dealTypeId);
 
       if (_cachedQueries)
       {
         query = query.Cacheable();
       }
 
-      var deals = query.ToList();
-
-      return deals;
+      return query;
     }
   }
 }

@@ -5,11 +5,11 @@
     /// <summary>
     /// returns 512 rows
     /// </summary>
-    public const int HUNDERTS_MERCHANT_ID = 1;
+    public const short HUNDERTS_MERCHANT_ID = 1;
 
     /// <summary>
     /// returns 54784 rows
     /// </summary>
-    public const int THOUSANDS_MERCHANT_ID = 9;
+    public const short THOUSANDS_MERCHANT_ID = 9;
   }
 }

@@ -66,12 +66,11 @@ namespace NHTestConsole.DbComplexCfg
 	                                  [totalarea],
 	                                  [specialoffer],
 	                                  [luxuryproperty]
-                                  FROM [dbo].[vwdeals]
+                                  FROM [dbo].[vwdeals2]
                                   WHERE dealtypeid = @dealtypeid
-
                                   ";
 
-    public IList<DealDataEntity> LoadDeals(int dealTypeId)
+    public IList<DealDataEntity> LoadDeals(short dealTypeId)
     {
       var result = new List<DealDataEntity>();
 

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 
 
 namespace NHTestConsole
@@ -8,7 +7,7 @@ namespace NHTestConsole
   {
     private static void Main(string[] args)
     {
-      //SimpleCfgTester.Test();
+      SimpleCfgTester.Test();
       Console.WriteLine();
 
       ComplexCfgTester.Test();

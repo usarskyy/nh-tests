@@ -13,7 +13,7 @@ namespace NHTestConsole.DbComplexCfg.Services
       var msg = new StringBuilder();
       var service = new AdoDealService();
 
-      for (int i = 1; i < cycles; i++)
+      for (int i = 0; i < cycles; i++)
       {
         var result = service.LoadHunderts();
 
@@ -28,42 +28,45 @@ namespace NHTestConsole.DbComplexCfg.Services
 
     public static void TestStatefulHunderts(bool useCache, int cycles = 1, bool log = false)
     {
-      using (var session = GetStatefulSession(useCache))
-      {
-        var msg = new StringBuilder();
+      var initializer = new NHComplexConfigInitializer(useCache);
 
-        for (int i = 1; i < cycles; i++)
+      for (int i = 0; i < cycles + 1; i++)
+      {
+        using (var session = GetStatefulSession(initializer))
         {
+          var msg = new StringBuilder();
           var service = new NHStatefulDealService(session, useCache);
           var result = service.LoadHunderts();
 
           msg.AppendFormat("loaded " + result.Count + "; ");
-        }
 
-        if (log)
-        {
-          Console.WriteLine("      " + msg);
+
+          if (log)
+          {
+            Console.WriteLine("      " + msg);
+          }
         }
       }
     }
 
     public static void TestStatelessHunderts(bool useCache, int cycles = 1, bool log = false)
     {
-      using (var session = GetStatelessSession(useCache))
-      {
-        StringBuilder msg = new StringBuilder();
+      var initializer = new NHComplexConfigInitializer(useCache);
 
-        for (int i = 1; i < cycles; i++)
+      for (int i = 0; i < cycles; i++)
+      {
+        using (var session = GetStatelessSession(initializer))
         {
+          var msg = new StringBuilder();
           var service = new NHStatelessDealService(session, useCache);
           var result = service.LoadHunderts();
 
           msg.AppendFormat("loaded " + result.Count + "; ");
-        }
-
-        if (log)
-        {
-          Console.WriteLine("      " + msg);
+          
+          if (log)
+          {
+            Console.WriteLine("      " + msg);
+          }
         }
       }
     }
@@ -74,7 +77,7 @@ namespace NHTestConsole.DbComplexCfg.Services
       var msg = new StringBuilder();
       var service = new AdoDealService();
 
-      for (int i = 1; i < cycles; i++)
+      for (int i = 0; i < cycles; i++)
       {
         var result = service.LoadThousands();
 
@@ -89,58 +92,58 @@ namespace NHTestConsole.DbComplexCfg.Services
 
     public static void TestStatefulThousands(bool useCache, int cycles = 1, bool log = false)
     {
-      using (var session = GetStatefulSession(useCache))
-      {
-        StringBuilder msg = new StringBuilder();
+      var initializer = new NHComplexConfigInitializer(useCache);
 
-        for (int i = 0; i < cycles; i++)
+      for (int i = 0; i < cycles; i++)
+      {
+        using (var session = GetStatefulSession(initializer))
         {
+          var msg = new StringBuilder();
           var service = new NHStatefulDealService(session, useCache);
           var result = service.LoadThousands();
 
           msg.AppendFormat("loaded " + result.Count + "; ");
-        }
-
-        if (log)
-        {
-          Console.WriteLine("      " + msg);
+          
+          if (log)
+          {
+            Console.WriteLine("      " + msg);
+          }
         }
       }
     }
 
     public static void TestStatelessThousands(bool useCache, int cycles = 1, bool log = false)
     {
-      using (var session = GetStatelessSession(useCache))
-      {
-        StringBuilder msg = new StringBuilder();
+      var initializer = new NHComplexConfigInitializer(useCache);
 
-        for (int i = 0; i < cycles; i++)
+      for (int i = 0; i < cycles; i++)
+      {
+        using (var session = GetStatelessSession(initializer))
         {
+          var msg = new StringBuilder();
           var service = new NHStatelessDealService(session, useCache);
           var result = service.LoadThousands();
 
           msg.AppendFormat("loaded " + result.Count + "; ");
-        }
-
-        if (log)
-        {
-          Console.WriteLine("      " + msg);
+          
+          if (log)
+          {
+            Console.WriteLine("      " + msg);
+          }
         }
       }
     }
 
     
-    private static ISession GetStatefulSession(bool useCache)
+    private static ISession GetStatefulSession(NHComplexConfigInitializer initializer)
     {
-      var initializer = new NHComplexConfigInitializer(useCache);
       var session = initializer.SessionFactory.OpenSession();
 
       return session;
     }
 
-    private static IStatelessSession GetStatelessSession(bool useCache)
+    private static IStatelessSession GetStatelessSession(NHComplexConfigInitializer initializer)
     {
-      var initializer = new NHComplexConfigInitializer(useCache);
       var session = initializer.SessionFactory.OpenStatelessSession();
 
       return session;

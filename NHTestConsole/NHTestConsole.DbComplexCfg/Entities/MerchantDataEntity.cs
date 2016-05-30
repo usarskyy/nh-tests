@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 
 namespace NHTestConsole.DbComplexCfg.Entities
@@ -7,11 +7,6 @@ namespace NHTestConsole.DbComplexCfg.Entities
   [Serializable]
   public class MerchantDataEntity
   {
-    public MerchantDataEntity()
-    {
-      ChildApplications = new Collection<ApplicationDataEntity>();
-    }
-
     public virtual int ID { get; set; }
 
     public virtual string Name { get; set; }
@@ -26,6 +21,6 @@ namespace NHTestConsole.DbComplexCfg.Entities
 
     public virtual string Street { get; set; }
 
-    public virtual Collection<ApplicationDataEntity> ChildApplications { get; set; } 
+    public virtual ISet<ApplicationDataEntity> ChildApplications { get; set; } 
   }
 }

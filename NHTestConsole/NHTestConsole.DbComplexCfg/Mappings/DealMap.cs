@@ -9,7 +9,7 @@ namespace NHTestConsole.DbComplexCfg.Mappings
   {
     public DealMap()
     {
-      Table("vwDeals");
+      Table("vwDeals2");
 
       Cache.IncludeAll()
            .ReadWrite();
@@ -65,6 +65,7 @@ namespace NHTestConsole.DbComplexCfg.Mappings
 
       References(x => x.Merchant)
         .Column("MerchantID")
+        .Fetch.Join()
         .LazyLoad()
         .Not.Nullable();
     }
