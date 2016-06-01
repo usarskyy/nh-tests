@@ -23,16 +23,24 @@ namespace NHTestConsole.DbComplexCfg.Services
 
     public IList<DealDataEntity> LoadThousands()
     {
-      var deals = GetBaseQuery(Constants.THOUSANDS_MERCHANT_ID).ToList();
+      using (_dbSession.BeginTransaction())
+      {
+        var deals = GetBaseQuery(Constants.THOUSANDS_MERCHANT_ID)
+          .ToList();
 
-      return deals;
+        return deals;
+      }
     }
 
     public IList<DealDataEntity> LoadHunderts()
     {
-      var deals = GetBaseQuery(Constants.HUNDERTS_MERCHANT_ID).ToList();
+      using (_dbSession.BeginTransaction())
+      {
+        var deals = GetBaseQuery(Constants.HUNDERTS_MERCHANT_ID)
+          .ToList();
 
-      return deals;
+        return deals;
+      }
     }
 
     private IEnumerable<DealDataEntity> GetBaseQuery(short dealTypeId)

@@ -30,7 +30,7 @@ namespace NHTestConsole
       ScenarioTester.Scenario($"Test stateful session without cache, loads a few thousands rows {testerReloadCount} times", () => NHDealTester.TestStatefulThousands(CacheType.None, testerReloadCount), runCycles: scenarioRerunCount, warmup: true);
       ScenarioTester.Scenario($"Test stateless session without cache, loads a few thousands rows {testerReloadCount} times", () => NHDealTester.TestStatelessThousands(CacheType.None, testerReloadCount), runCycles: scenarioRerunCount, warmup: true);
       ScenarioTester.Scenario($"Test stateful session with cache [{cacheType}], loads a few thousands rows {testerReloadCount} times", () => NHDealTester.TestStatefulThousands(cacheType, testerReloadCount), runCycles: scenarioRerunCount, warmup: true);
-      ScenarioTester.Scenario($"Test stateless session with cache [{cacheType}], loads a few thousands rows {testerReloadCount} times", () => NHDealTester.TestStatefulThousands(cacheType, testerReloadCount), runCycles: scenarioRerunCount, warmup: true);
+      ScenarioTester.Scenario($"Test stateless session with cache [{cacheType}], loads a few thousands rows {testerReloadCount} times", () => NHDealTester.TestStatelessThousands(cacheType, testerReloadCount), runCycles: scenarioRerunCount, warmup: true);
     } 
   }
 }

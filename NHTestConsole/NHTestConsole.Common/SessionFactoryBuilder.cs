@@ -17,9 +17,9 @@ namespace NHTestConsole.Common
     {
       var nhibernateCfg = new Configuration();
 
-      if (cacheType == CacheType.Redis)
+      if (cacheType == CacheType.Redis || cacheType == CacheType.RedisJson)
       {
-        RedisConnectionMultiplexerInitializer.Init();
+        RedisConnectionMultiplexerInitializer.Init(cacheType == CacheType.RedisJson);
       }
 
       nhibernateCfg.SessionFactory()
@@ -37,6 +37,7 @@ namespace NHTestConsole.Common
         switch (cacheType)
         {
           case CacheType.Redis:
+          case CacheType.RedisJson:
             x.ProviderClass<RedisCacheProvider>();
             break;
           case CacheType.RtCache:

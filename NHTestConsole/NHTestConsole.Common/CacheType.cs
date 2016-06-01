@@ -5,6 +5,7 @@
     None = 0,
     Redis = 1,
     SysCache = 2,
-    RtCache = 3
+    RtCache = 3,
+    RedisJson = 4,
   }
 }
