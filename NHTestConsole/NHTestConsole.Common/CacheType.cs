@@ -7,5 +7,6 @@
     SysCache = 2,
     RtCache = 3,
     RedisJson = 4,
+    MemCached = 5,
   }
 }

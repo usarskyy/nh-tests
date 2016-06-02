@@ -2,6 +2,7 @@
 
 using NHibernate;
 using NHibernate.Bytecode;
+using NHibernate.Caches.MemCache;
 using NHibernate.Caches.Redis;
 using NHibernate.Caches.RtMemoryCache;
 using NHibernate.Caches.SysCache2;
@@ -16,7 +17,7 @@ namespace NHTestConsole.Common
     public static ISessionFactory BuildWithMappingsFromAssemblyOf<TType>(CacheType cacheType)
     {
       var nhibernateCfg = new Configuration();
-
+      
       if (cacheType == CacheType.Redis || cacheType == CacheType.RedisJson)
       {
         RedisConnectionMultiplexerInitializer.Init(cacheType == CacheType.RedisJson);
@@ -28,11 +29,12 @@ namespace NHTestConsole.Common
                    .Connected.ByAppConfing("adminDb");
 
       var fluentCfg = Fluently.Configure(nhibernateCfg);
-
+      
       fluentCfg.Cache(x =>
       {
         x.UseQueryCache();
         x.UseSecondLevelCache();
+        x.UseMinimalPuts();
 
         switch (cacheType)
         {
@@ -45,6 +47,9 @@ namespace NHTestConsole.Common
             break;
           case CacheType.SysCache:
             x.ProviderClass<SysCacheProvider>();
+            break;
+          case CacheType.MemCached:
+            x.ProviderClass<MemCacheProvider>();
             break;
         }
       });

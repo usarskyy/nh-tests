@@ -13,7 +13,7 @@ namespace NHTestConsole.Common
     {
       if (!_redisConnMultiplexerInitialized)
       {
-        var connectionMultiplexer = ConnectionMultiplexer.Connect($"{RedisSettings.ServerHost}:6379");
+        var connectionMultiplexer = ConnectionMultiplexer.Connect($"{RedisSettings.ConnectionString}");
         RedisCacheProvider.SetConnectionMultiplexer(connectionMultiplexer);
 
         if (useJsonSerializer)

@@ -8,16 +8,14 @@ namespace NHTestConsole
 {
   internal static class SimpleCfgTester
   {
-    public static void Test()
+    public static void Test(CacheType cacheType)
     {
       const int testerReloadCount = 10;
       const int scenarioRerunCount = 1;
 
       Console.WriteLine("Test simple services: ");
       Console.WriteLine();
-
-      var cacheType = CacheType.RtCache;
-
+      
       ScenarioTester.Scenario($"Test ADO.NET without cache, loads a few hunderts rows {testerReloadCount} times", () => NHDealTester.TestAdoHunderts(testerReloadCount), runCycles: scenarioRerunCount, warmup: true);
       ScenarioTester.Scenario($"Test stateful session without cache, loads a few hunderts rows {testerReloadCount} times", () => NHDealTester.TestStatefulHunderts(CacheType.None, testerReloadCount), runCycles: scenarioRerunCount, warmup: true);
       ScenarioTester.Scenario($"Test stateless session without cache, loads a few hunderts rows {testerReloadCount} times", () => NHDealTester.TestStatelessHunderts(CacheType.None, testerReloadCount), runCycles: scenarioRerunCount, warmup: true);

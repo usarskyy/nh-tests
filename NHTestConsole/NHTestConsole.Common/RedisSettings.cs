@@ -5,6 +5,6 @@ namespace NHTestConsole.Common
 {
   public static class RedisSettings
   {
-    public static string ServerHost => ConfigurationManager.AppSettings["redis-host"];
+    public static string ConnectionString => ConfigurationManager.AppSettings["redis-conn-str"];
   }
 }

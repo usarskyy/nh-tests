@@ -1,5 +1,7 @@
 ﻿using System;
 
+using NHTestConsole.Common;
+
 
 namespace NHTestConsole
 {
@@ -7,10 +9,12 @@ namespace NHTestConsole
   {
     private static void Main(string[] args)
     {
-      SimpleCfgTester.Test();
+      var cacheType = CacheType.RedisJson;
+
+      SimpleCfgTester.Test(cacheType);
       Console.WriteLine();
 
-      ComplexCfgTester.Test();
+      ComplexCfgTester.Test(cacheType);
       Console.ReadLine();
     }
   }
