@@ -3,8 +3,6 @@ using System.Text;
 
 using NHibernate;
 
-using NHTestConsole.Common;
-
 
 namespace NHTestConsole.DbComplexCfg.Services
 {
@@ -32,15 +30,13 @@ namespace NHTestConsole.DbComplexCfg.Services
       }
     }
 
-    public static void TestStatefulHunderts(CacheType cacheType, int cycles = 1, bool log = false)
+    public static void TestStatefulHunderts(NHComplexConfigInitializer initializer, int cycles = 1, bool log = false)
     {
-      var initializer = new NHComplexConfigInitializer(cacheType);
-
-      for (int i = 0; i < cycles + 1; i++)
+      for (int i = 0; i < cycles; i++)
       {
         using (var session = GetStatefulSession(initializer))
         {
-          var service = new NHStatefulDealService(session, cacheType != CacheType.None);
+          var service = new NHStatefulDealService(session, initializer.Cached);
           var result = service.LoadHunderts();
 
           if (log)
@@ -51,15 +47,13 @@ namespace NHTestConsole.DbComplexCfg.Services
       }
     }
 
-    public static void TestStatelessHunderts(CacheType cacheType, int cycles = 1, bool log = false)
+    public static void TestStatelessHunderts(NHComplexConfigInitializer initializer, int cycles = 1, bool log = false)
     {
-      var initializer = new NHComplexConfigInitializer(cacheType);
-
       for (int i = 0; i < cycles; i++)
       {
         using (var session = GetStatelessSession(initializer))
         {
-          var service = new NHStatelessDealService(session, cacheType != CacheType.None);
+          var service = new NHStatelessDealService(session, initializer.Cached);
           var result = service.LoadHunderts();
           
           if (log)
@@ -92,15 +86,13 @@ namespace NHTestConsole.DbComplexCfg.Services
       }
     }
 
-    public static void TestStatefulThousands(CacheType cacheType, int cycles = 1, bool log = false)
+    public static void TestStatefulThousands(NHComplexConfigInitializer initializer, int cycles = 1, bool log = false)
     {
-      var initializer = new NHComplexConfigInitializer(cacheType);
-
       for (int i = 0; i < cycles; i++)
       {
         using (var session = GetStatefulSession(initializer))
         {
-          var service = new NHStatefulDealService(session, cacheType != CacheType.None);
+          var service = new NHStatefulDealService(session, initializer.Cached);
           var result = service.LoadThousands();
           
           if (log)
@@ -111,15 +103,13 @@ namespace NHTestConsole.DbComplexCfg.Services
       }
     }
 
-    public static void TestStatelessThousands(CacheType cacheType, int cycles = 1, bool log = false)
+    public static void TestStatelessThousands(NHComplexConfigInitializer initializer, int cycles = 1, bool log = false)
     {
-      var initializer = new NHComplexConfigInitializer(cacheType);
-
       for (int i = 0; i < cycles; i++)
       {
         using (var session = GetStatelessSession(initializer))
         {
-          var service = new NHStatelessDealService(session, cacheType != CacheType.None);
+          var service = new NHStatelessDealService(session, initializer.Cached);
           var result = service.LoadThousands();
           
           if (log)

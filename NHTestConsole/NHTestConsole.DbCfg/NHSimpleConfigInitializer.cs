@@ -10,9 +10,12 @@ namespace NHTestConsole.DbSimpleCfg
   {
     public ISessionFactory SessionFactory { get; private set; }
 
+		public bool Cached { get; }
+
     public NHSimpleConfigInitializer(CacheType cacheType = CacheType.None)
     {
-      SessionFactory = SessionFactoryBuilder.BuildWithMappingsFromAssemblyOf<DealMap>(cacheType);
+	    Cached = cacheType != CacheType.None;
+			SessionFactory = SessionFactoryBuilder.BuildWithMappingsFromAssemblyOf<DealMap>(cacheType);
     }
   }
 }
